@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddActivity"
+        tools:layout_editor_absoluteY="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/name_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="136dp"
+                    android:ems="10"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/mobile_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:hint="@string/mobile"
+                    android:inputType="number"
+                    app:layout_constraintStart_toStartOf="@+id/name_add"
+                    app:layout_constraintTop_toBottomOf="@+id/name_add" />
+
+                <Spinner
+                    android:id="@+id/blood_type2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/blood_type"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintEnd_toEndOf="@+id/address_add"
+                    app:layout_constraintStart_toStartOf="@+id/address_add"
+                    app:layout_constraintTop_toBottomOf="@+id/date_add" />
+
+                <EditText
+                    android:id="@+id/address_add"
+                    style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="@string/address"
+                    android:inputType="textPostalAddress"
+                    android:singleLine="false"
+                    app:layout_constraintStart_toStartOf="@+id/date_add"
+                    app:layout_constraintTop_toBottomOf="@+id/blood_type2" />
+
+                <EditText
+                    android:id="@+id/note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:ems="10"
+                    android:hint="@string/note_add"
+                    android:inputType="textMultiLine"
+                    android:singleLine="false"
+                    app:layout_constraintStart_toStartOf="@+id/address_add"
+                    app:layout_constraintTop_toBottomOf="@+id/address_add" />
+
+                <Button
+                    android:id="@+id/confirm_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginBottom="62dp"
+                    android:text="@string/confirm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cancel"
+                    app:layout_constraintTop_toBottomOf="@+id/note" />
+
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:text="@string/cancel"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/confirm_add"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginTop="74dp"
+                    android:layout_marginEnd="114dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/name_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/donor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/donor" />
+
+                    <RadioButton
+                        android:id="@+id/requester"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/requester" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/date_add"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/date"
+                    app:layout_constraintEnd_toEndOf="@+id/confirm_add"
+                    app:layout_constraintStart_toStartOf="@+id/mobile_add"
+                    app:layout_constraintTop_toBottomOf="@+id/mobile_add" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>

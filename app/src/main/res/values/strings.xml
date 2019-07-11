@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Give A Life</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="login_email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="error_missing_login">Please Fill the required fields</string>
+    <string name="error_incorrect">\"Incorrect Username or Password\"</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="error_duplicate">Email Address Already Exist.</string>
+    <string name="not_verfied">Your Email Address is not Verified</string>
+    <string name="verfiy">Send Verify Email</string>
+    <string name="email_sent">Verification Email Sent</string>
+    <string name="required">Email or password cannot be Empty</string>
+    <string name="password_restruction">Password should be more then 8 Characters</string>
+    <string name="password_not_match">Password Does not Match</string>
+    <string name="email_restruction">Email Address should not contains Space or it is not vaild.</string>
+    <string name="error_data">Opps! Someting went Wrong</string>
+    <string name="date">Due Date</string>
+    <string name="address">Your Location</string>
+    <string name="note_add">Add Any Note</string>
+    <string name="donor">Donate</string>
+    <string name="requester">Request</string>
+    <string name="contact">Contact</string>
+    <string name="request_item">Request Item view</string>
+    <string name="note">Notes:</string>
+    <string name="blood_type">Blood Type</string>
+    <string name="profile">Profile</string>
+    <string name="my_request">My Request</string>
+    <string name="edit">Edit</string>
+    <array name="blood_type">
+        <item name="bloodtype">Blood Type</item>
+        <item name="A+">A+</item>
+        <item name="A-">A-</item>
+        <item name="B">B+</item>
+        <item name="B">B-</item>
+        <item name="AB+">AB+</item>
+        <item name="AB-">AB-</item>
+        <item name="O+">O+</item>
+        <item name="O-">O-</item>
+    </array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>
