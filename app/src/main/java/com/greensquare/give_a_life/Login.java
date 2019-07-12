@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.greensquare.give_a_life.Models.Data;
 import com.greensquare.give_a_life.Models.User;
 import com.greensquare.give_a_life.Utility.DataMaster;
@@ -48,10 +49,22 @@ public class Login extends AppCompatActivity {
                 usernameStr = username.getText().toString();
                 passwordStr = password.getText().toString();
 
-                dm.login(usernameStr,passwordStr);
+                dm.login(usernameStr, passwordStr, new DataMaster.LoginUser() {
+                    @Override
+                    public void login(boolean exists, boolean verified, User user) {
+                        if(!exists){
+                            Snackbar.make(login,R.string.error_incorrect,Snackbar.LENGTH_LONG).show();
+                        }else if(!verified){
+                            verfication();
+                        }else{
+                            data.setUser(user);
+                            Intent intent = new Intent(Login.this, TabbedActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
 
-                Intent intent = new Intent(Login.this, TabbedActivity.class);
-                startActivity(intent);
+
             }
         });
 
@@ -64,5 +77,19 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+    private void verfication(){
+        Snackbar.make(login,
+                R.string.not_verfied,
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.verfiy,
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dm.verfyEmail();
+                                Snackbar.make(login,R.string.email_sent,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
     }
 }

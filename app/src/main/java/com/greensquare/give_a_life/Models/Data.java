@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class Data {
 
-    private ArrayList<Request> requests;
+    private ArrayList<Request> donor,requesters;
     private ArrayList<User> users;
     private Request request;
     private User user;
     private static Data instance;
 
     private Data (){
-        requests = new ArrayList<>();
+        requesters = new ArrayList<>();
+        donor = new ArrayList<>();
         users = new ArrayList<>();
         request = new Request();
         user = new User();
@@ -24,12 +25,20 @@ public class Data {
         return instance;
     }
 
-    public ArrayList<Request> getRequests() {
-        return requests;
+    public ArrayList<Request> getRequesters() {
+        return requesters;
     }
 
-    public void setRequests(ArrayList<Request> requests) {
-        this.requests = requests;
+    public void setRequesters(ArrayList<Request> requesters) {
+        this.requesters = requesters;
+    }
+
+    public ArrayList<Request> getDonor() {
+        return donor;
+    }
+
+    public void setDonor(ArrayList<Request> donor) {
+        this.donor = donor;
     }
 
     public ArrayList<User> getUsers() {
