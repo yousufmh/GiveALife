@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
 
-        <variable name="user" type="com.greensquare.givealife.models.User"/>
+        <variable name="user" type="com.greensquare.give_a_life.models.User"/>
 
     </data>
 

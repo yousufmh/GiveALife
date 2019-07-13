@@ -27,7 +27,7 @@
     <string name="password_not_match">Password Does not Match</string>
     <string name="email_restruction">Email Address should not contains Space or it is not vaild.</string>
     <string name="error_data">Opps! Someting went Wrong</string>
-    <string name="date">Due Date</string>
+    <string name="date">Choose Due Date</string>
     <string name="address">Your Location</string>
     <string name="note_add">Add Any Note</string>
     <string name="donor">Donate</string>
@@ -52,4 +52,6 @@
     </array>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="asap">As Soon As Possible</string>
+    <string name="signout">Sign out</string>
 </resources>

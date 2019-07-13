@@ -1,4 +1,4 @@
-package com.greensquare.give_a_life.Models;
+package com.greensquare.give_a_life.models;
 
 public class User {
 

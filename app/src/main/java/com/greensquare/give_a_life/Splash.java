@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.greensquare.give_a_life.Models.Data;
-import com.greensquare.give_a_life.Models.Request;
+import com.greensquare.give_a_life.models.Data;
 import com.greensquare.give_a_life.Utility.DataMaster;
-
-import java.util.ArrayList;
 
 public class Splash extends AppCompatActivity {
 
@@ -32,6 +29,8 @@ public class Splash extends AppCompatActivity {
         super.onStart();
 
         DM.checkConnection();
-
+        Intent intent = new Intent(Splash.this, Login.class);
+        startActivity(intent);
+        finish();
     }
 }

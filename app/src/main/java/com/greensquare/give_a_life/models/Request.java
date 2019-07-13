@@ -1,11 +1,12 @@
-package com.greensquare.give_a_life.Models;
+package com.greensquare.give_a_life.models;
 
 public class Request {
 
     private String ID;
-    private String username;
+    private String name;
     private String postDate;
     private String dueDate;
+    private String userContact;
     private String location;
     private String note;
     private String bloodType;
@@ -13,7 +14,8 @@ public class Request {
 
     public Request() {
         this.ID = "";
-        this.username = "";
+        this.name = "";
+        this.userContact="";
         this.postDate = "";
         this.dueDate = "";
         this.location = "";
@@ -30,12 +32,12 @@ public class Request {
         this.ID = ID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPostDate() {
@@ -44,6 +46,14 @@ public class Request {
 
     public void setPostDate(String postDate) {
         this.postDate = postDate;
+    }
+
+    public String getUserContact() {
+        return userContact;
+    }
+
+    public void setUserContact(String userContact) {
+        this.userContact = userContact;
     }
 
     public String getDueDate() {

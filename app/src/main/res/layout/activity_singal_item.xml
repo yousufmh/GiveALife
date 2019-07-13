@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
 
-        <variable name="Request" type="com.greensquare.givealife.models.Request"/>
+        <variable name="Request" type="com.greensquare.give_a_life.models.Request"/>
 
     </data>
 
@@ -158,10 +158,5 @@
 
         </ScrollView>
 
-        <Button
-            android:id="@+id/contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact" />
     </LinearLayout>
 </layout>

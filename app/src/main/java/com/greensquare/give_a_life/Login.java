@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.greensquare.give_a_life.Models.Data;
-import com.greensquare.give_a_life.Models.User;
+import com.greensquare.give_a_life.models.Data;
+import com.greensquare.give_a_life.models.User;
 import com.greensquare.give_a_life.Utility.DataMaster;
 
 public class Login extends AppCompatActivity {
@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity {
                             data.setUser(user);
                             Intent intent = new Intent(Login.this, TabbedActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 });
@@ -73,6 +74,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, Signup.class);
                 startActivity(intent);
+                finish();
             }
         });
 

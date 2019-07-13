@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,8 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.greensquare.give_a_life.Models.Data;
-import com.greensquare.give_a_life.Models.User;
+import com.greensquare.give_a_life.models.Data;
+import com.greensquare.give_a_life.models.User;
 import com.greensquare.give_a_life.Utility.DataMaster;
 
 public class Signup extends AppCompatActivity {

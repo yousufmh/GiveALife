@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.greensquare.give_a_life.Models.Data;
+import com.greensquare.give_a_life.models.Data;
 import com.greensquare.give_a_life.Utility.DataMaster;
 import com.greensquare.give_a_life.Utility.TabAdaptor;
 
@@ -53,6 +53,7 @@ public class TabbedActivity extends AppCompatActivity {
                 dm.getAuth().signOut();
                 Intent intent = new Intent(TabbedActivity.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {
