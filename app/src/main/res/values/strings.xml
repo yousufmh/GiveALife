@@ -51,7 +51,10 @@
         <item name="O-">O-</item>
     </array>
     <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="add_widget">Add New Request</string>
     <string name="asap">As Soon As Possible</string>
     <string name="signout">Sign out</string>
+    <string name="shortcut">Shortcut Menu</string>
+    <string name="donor_list">Donors List</string>
+    <string name="requester_list">Requesters List</string>
 </resources>

@@ -59,7 +59,7 @@ public class Requeter extends Fragment {
         dm.getData(false, new DataMaster.GetRequests() {
             @Override
             public void fetch(ArrayList<Request> requests) {
-
+                requesterss.clear();
                 requesterss.addAll(requests);
                 adaptor.notifyDataSetChanged();
 
