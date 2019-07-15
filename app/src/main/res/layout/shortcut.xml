@@ -10,43 +10,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="133dp"
+        android:layout_marginStart="101dp"
         android:layout_marginTop="41dp"
         android:text="@string/shortcut"
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="142dp"
+        android:id="@+id/donor_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/name_widget"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="14dp"
         android:text="@string/donor_list" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/requester_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/donor_btn"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="179dp"
+        android:layout_marginTop="-51dp"
         android:text="@string/requester_list" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/add_widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/requester_btn"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="141dp"
+        android:layout_marginStart="105dp"
         android:layout_marginTop="20dp"
         android:text="@string/add_widget" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/name_widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
@@ -55,4 +55,20 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/list_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_widget"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/login_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_widget"
+        android:layout_marginTop="177dp"
+        android:text="@string/login"
+        android:visibility="invisible" />
 </RelativeLayout>
