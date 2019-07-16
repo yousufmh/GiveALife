@@ -57,4 +57,19 @@
     <string name="shortcut">Shortcut Menu</string>
     <string name="donor_list">Donors List</string>
     <string name="requester_list">Requesters List</string>
+    <string name="email_description">Please Enter Your Email</string>
+    <string name="password_description">Please Enter Your Password</string>
+    <string name="login_description">Click the button to login</string>
+    <string name="signup_description">Click this button to Sign Up</string>
+    <string name="dorr_description">Please choose Request type</string>
+    <string name="name_description" >Please Enter the Name </string>
+    <string name="mobile_description">Please Enter your Mobile number</string>
+    <string name="due_description">Due date type</string>
+    <string name="blood_description">Choose from the list the blood type</string>
+    <string name="location_description">Enter your location</string>
+    <string name="note_description">Enter any note you want</string>
+    <string name="confirm_description">Confirm The request</string>
+    <string name="cancel_description">Cancel The request</string>
+    <string name="singout_description">Click to Sign Out</string>
+    <string name="add_description">Click to Add new Request</string>
 </resources>

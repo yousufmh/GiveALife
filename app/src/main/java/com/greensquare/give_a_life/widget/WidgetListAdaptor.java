@@ -30,26 +30,22 @@ public class WidgetListAdaptor implements RemoteViewsService.RemoteViewsFactory 
     private Request request;
     private boolean DorR;
     private int widgetID;
-    private FirebaseDatabase DB = FirebaseDatabase.getInstance();
+    private FirebaseDatabase DB ;
+    private final static String TAG = "WidgetFactory";
 
 
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public WidgetListAdaptor(Context applicationContext, Intent intent) {
+    private FirebaseFirestore db ;
+    public WidgetListAdaptor(Context applicationContext) {
         context = applicationContext;
-        Bundle extras = intent.getExtras();
-
-        if (extras != null) {
-            DorR = (boolean)extras.get("DorR");
-        }else{
-            widgetID = AppWidgetManager.INVALID_APPWIDGET_ID;
-        }
+        db = FirebaseFirestore.getInstance();
+        DB =FirebaseDatabase.getInstance();
 
     }
 
     private void fetchData(){
 
-        db.collection("requests").whereEqualTo("donor", DorR).get().addOnCompleteListener((Executor) this, new OnCompleteListener<QuerySnapshot>() {
+        db.collection("requests").get().addOnCompleteListener( new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -63,6 +59,7 @@ public class WidgetListAdaptor implements RemoteViewsService.RemoteViewsFactory 
                         temp = doc.toObject(Request.class);
                         requests.add(temp);
                     }
+                    Log.d(TAG, "List size in fetch"+requests.size());
 
                 }
 
@@ -94,12 +91,14 @@ public class WidgetListAdaptor implements RemoteViewsService.RemoteViewsFactory 
 
     @Override
     public int getCount() {
+
+        Log.d(TAG, "List size in count "+requests.size());
         return requests.size();
     }
 
     @Override
     public RemoteViews getViewAt(int i) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.item_row);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.shortcut_item);
         request = requests.get(i);
 
         views.setTextViewText(R.id.name, request.getName());

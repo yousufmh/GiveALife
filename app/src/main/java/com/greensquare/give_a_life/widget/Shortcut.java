@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.greensquare.give_a_life.AddActivity;
 import com.greensquare.give_a_life.Login;
 import com.greensquare.give_a_life.R;
+import com.greensquare.give_a_life.TabbedActivity;
 import com.greensquare.give_a_life.Utility.DataMaster;
 
 /**
@@ -48,8 +49,8 @@ public class Shortcut extends AppWidgetProvider {
 
     }
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                       int appWidgetId) {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -60,33 +61,49 @@ public class Shortcut extends AppWidgetProvider {
 
         if(userExist){
             views.setTextViewText(R.id.name_widget, "Welcome "+user.getEmail());
+            views.setViewVisibility(R.id.login_widget,View.INVISIBLE);
+            views.setViewVisibility(R.id.donor_btn,View.VISIBLE);
+            views.setViewVisibility(R.id.add_widget, View.VISIBLE);
+            views.setViewVisibility(R.id.requester_btn, View.VISIBLE);
 
             Intent addIntent = new Intent(context, AddActivity.class);
-            Intent donorIntent = new Intent(context, Shortcut.class);
-            Intent requesterIntent = new Intent(context, Shortcut.class);
+            Intent donorIntent = new Intent(context, TabbedActivity.class);
+            Intent requesterIntent = new Intent(context, TabbedActivity.class);
+            Intent serviceIntent = new Intent(context,WidgetServices.class);
+
 
             donorIntent.setAction(DONOR);
             requesterIntent.setAction(REQUESTER);
 
+            serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            serviceIntent.setData(Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME)));
+            donorIntent.putExtra("DorR", true);
+            requesterIntent.putExtra("DorR", false);
+
+            views.setRemoteAdapter(R.id.list_widget,serviceIntent);
+
             PendingIntent pendingAdd = PendingIntent.getActivity(context,0,addIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            PendingIntent pendingDonor = PendingIntent.getBroadcast(context, 0, donorIntent, 0);
-            PendingIntent pendingRequester = PendingIntent.getBroadcast(context, 0, requesterIntent, 0);
+            PendingIntent pendingDonor = PendingIntent.getActivity(context, 0, donorIntent, 0);
+            PendingIntent pendingRequester = PendingIntent.getActivity(context, 0, requesterIntent, 0);
 
             views.setOnClickPendingIntent(R.id.donor_btn,pendingDonor);
             views.setOnClickPendingIntent(R.id.add_widget, pendingAdd);
             views.setOnClickPendingIntent(R.id.requester_btn, pendingRequester);
 
+
+
         }else{
             views.setTextViewText(R.id.name_widget, "Welcome Guest Please Sign in to use the Widget");
             Intent signActivity = new Intent(context, Login.class);
 
+            signActivity.putExtra("coming from widget", true);
             views.setViewVisibility(R.id.list_widget, View.INVISIBLE);
             views.setViewVisibility(R.id.login_widget, View.VISIBLE);
             PendingIntent pending = PendingIntent.getActivity(context,0,signActivity, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            views.setOnClickPendingIntent(R.id.donor_btn,pending);
-            views.setOnClickPendingIntent(R.id.add_widget, pending);
-            views.setOnClickPendingIntent(R.id.requester_btn, pending);
+            views.setViewVisibility(R.id.donor_btn,View.INVISIBLE);
+            views.setViewVisibility(R.id.add_widget, View.INVISIBLE);
+            views.setViewVisibility(R.id.requester_btn, View.INVISIBLE);
             views.setOnClickPendingIntent(R.id.name_widget, pending);
             views.setOnClickPendingIntent(R.id.login_widget,pending);
 

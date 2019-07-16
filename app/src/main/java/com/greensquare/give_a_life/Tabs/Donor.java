@@ -60,7 +60,7 @@ public class Donor extends Fragment {
         dm.getData(true, new DataMaster.GetRequests() {
             @Override
             public void fetch(ArrayList<Request> requests) {
-
+                donors.clear();
                 donors.addAll(requests);
                 adaptor.notifyDataSetChanged();
 

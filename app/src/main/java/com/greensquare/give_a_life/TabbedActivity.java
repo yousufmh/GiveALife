@@ -3,6 +3,8 @@ package com.greensquare.give_a_life;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.greensquare.give_a_life.models.Data;
 import com.greensquare.give_a_life.Utility.DataMaster;
 import com.greensquare.give_a_life.Utility.TabAdaptor;
+import com.greensquare.give_a_life.widget.Shortcut;
 
 public class TabbedActivity extends AppCompatActivity {
 
@@ -33,6 +36,10 @@ public class TabbedActivity extends AppCompatActivity {
         dm = new DataMaster(this);
         adaptor = new TabAdaptor(getSupportFragmentManager());
 
+        Intent fromWidget = getIntent();
+
+        boolean DorR = fromWidget.getBooleanExtra("DorR", true);
+
         pager = findViewById(R.id.viewpager_main);
         layout = findViewById(R.id.tabs_main);
         signout = findViewById(R.id.sign_out);
@@ -41,6 +48,12 @@ public class TabbedActivity extends AppCompatActivity {
 
         pager.setAdapter(adaptor);
         layout.setupWithViewPager(pager);
+
+        if(DorR){
+            pager.setCurrentItem(0);
+        }else{
+            pager.setCurrentItem(1);
+        }
 
     }
 
@@ -51,6 +64,18 @@ public class TabbedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dm.getAuth().signOut();
+
+                Intent widgetIntent = new Intent(TabbedActivity.this, Shortcut.class);
+                widgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                int[] ids = AppWidgetManager.
+                        getInstance(getApplication())
+                        .getAppWidgetIds(new ComponentName(getApplication()
+                                , Shortcut.class));
+                AppWidgetManager appWidgetManager1 = AppWidgetManager.getInstance(getApplicationContext());
+                Shortcut.updateAppWidget(getApplicationContext(), appWidgetManager1 ,0);
+                widgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
+                widgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 0);
+                sendBroadcast(widgetIntent);
                 Intent intent = new Intent(TabbedActivity.this, Login.class);
                 startActivity(intent);
                 finish();

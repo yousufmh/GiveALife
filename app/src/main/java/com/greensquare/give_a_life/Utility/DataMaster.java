@@ -1,6 +1,7 @@
 package com.greensquare.give_a_life.Utility;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -10,12 +11,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.greensquare.give_a_life.models.Request;
 import com.greensquare.give_a_life.models.User;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +29,12 @@ public class DataMaster {
 
     private Activity activity;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseDatabase DB = FirebaseDatabase.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user;
+
+    private boolean internetAccess;
+    private final static String TAG = "DataMaster";
 
     public DataMaster(Activity activity){
         this.activity = activity;
@@ -100,8 +109,6 @@ public class DataMaster {
     });
     }
 
-    public void checkConnection() {
-    }
 
     public void getData(boolean DorR,final GetRequests getRequests) {
         final ArrayList<Request> requests = new ArrayList<>();
@@ -140,6 +147,17 @@ public class DataMaster {
 
     }
 
+    public void internetConnection(final CheckInternetAccess connect){
+
+        new InternetAccess(new CheckInternetAccess() {
+            @Override
+            public void access(boolean connected) {
+                connect.access(connected);
+            }
+        }).execute();
+
+    }
+
 
     public interface CreateUser {
         void exisit(boolean exisit);
@@ -151,6 +169,42 @@ public class DataMaster {
 
     public interface LoginUser {
         void login(boolean exists, boolean verified, User user);
+    }
+
+    public interface CheckInternetAccess{
+        void access(boolean connected);
+    }
+
+
+    public class InternetAccess extends AsyncTask<Void,Void,Boolean>{
+
+        CheckInternetAccess checking;
+
+        public InternetAccess(CheckInternetAccess mChecking){
+            checking = mChecking;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+
+            Socket socket = new Socket();
+            InetSocketAddress ipAddress = new InetSocketAddress("8.8.8.8", 53);
+            try {
+                socket.connect(ipAddress,2500);
+                socket.close();
+                return true;
+            } catch (IOException e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+
+            checking.access(aBoolean);
+            Log.d(TAG, "The internet Access is within onPost "+aBoolean);
+            super.onPostExecute(aBoolean);
+        }
     }
 
 }
